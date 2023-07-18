@@ -83,4 +83,17 @@ public with sharing class Training
         newContactRecordAssociatedWithAccount.LastName=lastName;
         insert newContactRecordAssociatedWithAccount;
     }
+    public static void createLeadsInBulk(integer numbers)
+    {
+        List<Lead> listOfLeadThatCreatedInBulk = new List<Lead>();
+        for(integer i=1;i<=numbers;i++)
+        {
+            Lead newLeadRecord = new Lead();
+            newLeadRecord.LastName='Test'+i;
+            newLeadRecord.Company='4iapps';
+            listOfLeadThatCreatedInBulk.add(newLeadRecord);
+        }
+        system.debug(listOfLeadThatCreatedInBulk);
+        insert listOfLeadThatCreatedInBulk;
+    }
 }
