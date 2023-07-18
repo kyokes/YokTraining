@@ -34,4 +34,13 @@ public with sharing class Training
         string reverseName=name.reverse();
         system.debug(reverseName);
     }
+    public static Lead createLeadRecord(string lastName,string email,string company)
+    {
+        Lead leadRecordToInsert = new Lead();
+        leadRecordToInsert.LastName=lastName;
+        leadRecordToInsert.Email=email;
+        leadRecordToInsert.Company=company;
+        insert leadRecordToInsert;
+        return leadRecordToInsert;
+    }
 }
