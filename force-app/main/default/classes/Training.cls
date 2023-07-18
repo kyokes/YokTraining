@@ -63,15 +63,24 @@ public with sharing class Training
     {
         if(birthDate==Null)
         {
-            date myDate = date.newInstance(1990, 01, 01);
+            date myDate = date.newInstance(1990, 01, 01);   
             birthDate=myDate;
 
         }
         Lead newLeadToBeInserted = new Lead();
         newLeadToBeInserted.LastName=lastName;
-        newLeadToBeInserted.Birthday__c=birthDate;
+        newLeadToBeInserted.Birthday__c=birthDate; 
         newLeadToBeInserted.Company=company;
         insert newLeadToBeInserted;
     }
-
+    public static void insertContactWheneverAccountIsCreated(string lastName)
+    {
+        Account newAccountRecord = new Account();
+        newAccountRecord.Name=lastName;
+        insert newAccountRecord;
+        Contact newContactRecordAssociatedWithAccount = new Contact();
+        newContactRecordAssociatedWithAccount.AccountId=newAccountRecord.Id;
+        newContactRecordAssociatedWithAccount.LastName=lastName;
+        insert newContactRecordAssociatedWithAccount;
+    }
 }
