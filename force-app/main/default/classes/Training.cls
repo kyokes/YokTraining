@@ -34,4 +34,16 @@ public with sharing class Training
         string reverseName=name.reverse();
         system.debug(reverseName);
     }
+
+
+    public static void printPrimeNumbers()
+    {
+        for(Integer i=1;i<=100;i++)
+        {
+            if(Math.mod(i, 2)==1)
+            {
+                system.debug(i);
+            }
+        }
+    }
 }
