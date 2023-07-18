@@ -35,7 +35,7 @@ public with sharing class Training
         system.debug(reverseName);
     }
     public static Lead createLeadRecord(string lastName,string email,string company)
-    {
+    {  
         Lead leadRecordToInsert = new Lead();
         leadRecordToInsert.LastName=lastName;
         leadRecordToInsert.Email=email;
@@ -43,4 +43,35 @@ public with sharing class Training
         insert leadRecordToInsert;
         return leadRecordToInsert;
     }
+    public static Lead createLeadRecordTest(string lastName,string email,string company)
+    {
+        Lead leadRecordToInsert = new Lead();
+        leadRecordToInsert.LastName=lastName;
+        leadRecordToInsert.Email=email;
+        leadRecordToInsert.Company=company;
+        if(lastName.containsIgnoreCase('test')==True) 
+        {
+            system.debug('Cant Insert');
+            return null;
+        }
+        else {
+            insert leadRecordToInsert;
+        }
+        return leadRecordToInsert;
+    }
+    public static void addDefaultBirthDate(string lastName,Date birthDate,string company)
+    {
+        if(birthDate==Null)
+        {
+            date myDate = date.newInstance(1990, 01, 01);
+            birthDate=myDate;
+
+        }
+        Lead newLeadToBeInserted = new Lead();
+        newLeadToBeInserted.LastName=lastName;
+        newLeadToBeInserted.Birthday__c=birthDate;
+        newLeadToBeInserted.Company=company;
+        insert newLeadToBeInserted;
+    }
+
 }
