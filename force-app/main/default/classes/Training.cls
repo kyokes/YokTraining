@@ -3,7 +3,7 @@
     Author Name  : Yokesh.k@4iapps.com
     Date Added : 17th July 2023
  */
- public with sharing class Training 
+ public with sharing class Training extends UtilityHelper
 {
     /*
     Class Name : Training
@@ -179,11 +179,11 @@
     */
     public static void insertContactWheneverAccountIsCreated(String lastName)
     {
-        // Create a new Account record.
+        // Create a new Account record after receiving Name
         Account newAccountRecord = new Account();
         // Set the Name attribute of the Account.
         newAccountRecord.Name = lastName;
-        // Insert the Account record into the database.
+        // Insert the Account record into the salesforce.  
         insert newAccountRecord;
 
         // Create a new Contact record associated with the Account.
@@ -203,21 +203,21 @@
     Summary : Create lead in Bulk
     Description :  Method to create multiple Lead records in bulk and insert them into the database.
     */
-    public static void createLeadsInBulk(Integer numbers)
+    public static void createLeadsInBulk()
     {
         // Create a list to store multiple Lead records.
         List<Lead> listOfLeadThatCreatedInBulk = new List<Lead>();
         
         // Loop to create the specified number of Lead records.
-        for (Integer i = 1; i <= numbers; i++)
+        for (Integer i = 1; i <= 3; i++)
         {
             // Create a new Lead record.
             Lead newLeadRecord = new Lead();
             // Set the FirstName,LastName,Email and Company attributes of the Lead.
             newLeadRecord.FirstName='Test';
-            newLeadRecord.LastName = 'Test' + i;
+            newLeadRecord.LastName = 'Test' + generateRandomString();
             newLeadRecord.Company = '4iapps';
-            newLeadRecord.Email='test.test'+i+'@4iapps.com';
+            newLeadRecord.Email='test.test'+generateRandomString()+'@4iapps.com';
             // Add the Lead record to the list.
             listOfLeadThatCreatedInBulk.add(newLeadRecord);
         }
