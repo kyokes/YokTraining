@@ -1,6 +1,18 @@
+ /*
+    Class Name : Training
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 17th July 2023
+ */
  public with sharing class Training 
 {
-    // Method to print numbers from 1 to 200 excluding those divisible by 9.
+    /*
+    Class Name : Training
+    Method Name : printNumber
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 17th July 2023
+    Summary : Print Prime Number
+    Description :  Method to print numbers from 1 to 200 excluding those divisible by 9.
+    */ 
     public static void printNumber() 
     {
         for(Integer i=1; i<=200; i++)
@@ -14,14 +26,28 @@
         }
     } 
 
-    // Method to calculate the sum of two numbers and return the result.
+    /*
+    Class Name : Training
+    Method Name : sumOfTwoNumber
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 17th July 2023
+    Summary : It will Sum of Two Numbers
+    Description :  Method to calculate the sum of two numbers and return the result.
+    */ 
     public static Integer sumOfTwoNumber(Integer num1, Integer num2)
     {
         Integer sum = num1 + num2;
         return sum;
     }
 
-    // Method to print a pyramid pattern using numbers.
+    /*
+    Class Name : Training
+    Method Name : pyramid
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 17th July 2023
+    Summary : Print Number in Pyramid  
+    Description :  Method to print a pyramid pattern using numbers.
+    */
     public static void pyramid()
     {
         // Define the number of rows in the pyramid.
@@ -44,7 +70,14 @@
         }
     }
 
-    // Method to reverse the characters of a given string and print the result.
+    /*
+    Class Name : Training
+    Method Name : reverseOrder
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 17th July 2023
+    Summary : Print the received name in reverse order  
+    Description :  Method to reverse the characters of a given string and print the result.
+    */
     public static void reverseOrder(String name) 
     {
         // Reverse the given string using the reverse() method.
@@ -53,7 +86,14 @@
         system.debug(reverseName);
     }
 
-    // Method to create a new Lead record and insert it into the database.
+    /*
+    Class Name : Training
+    Method Name : createLeadRecord
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 18th July 2023
+    Summary : Create New Lead  
+    Description :  Method to create a new Lead record and insert it into the database.
+    */
     public static Lead createLeadRecord(String lastName, String email, String company)
     {  
         // Create a new Lead object.
@@ -68,7 +108,14 @@
         return leadRecordToInsert;
     }
 
-    // Method to create a new Lead record and insert it into the database (with additional validation).
+    /*
+    Class Name : Training
+    Method Name : createLeadRecordTest
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 18th July 2023
+    Summary : Create New Lead if the last name is not equal to 'Test' 
+    Description :  Method to create a new Lead record and insert it into the database (with additional validation).
+    */
     public static Lead createLeadRecordTest(String lastName, String email, String company)
     {
         // Create a new Lead object.
@@ -94,7 +141,14 @@
         return leadRecordToInsert;
     }
 
-    // Method to add a default birth date to a Lead record and insert it into the database.
+    /*
+    Class Name : Training
+    Method Name : addDefaultBirthDate
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 18th July 2023
+    Summary : If the birthdate is not there default value should be inserted.
+    Description :  Method to add a default birth date to a Lead record and insert it into the database.
+    */
     public static void addDefaultBirthDate(String lastName, Date birthDate, String company)
     {
         // Check if the birth date is null.
@@ -115,7 +169,14 @@
         insert newLeadToBeInserted;
     }
 
-    // Method to create an Account record and a related Contact record when an Account is created.
+    /*
+    Class Name : Training
+    Method Name : insertContactWheneverAccountIsCreated
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 18th July 2023
+    Summary : Whenever a account is created , create new contact assiociated with account
+    Description :  Method to create an Account record and a related Contact record when an Account is created.
+    */
     public static void insertContactWheneverAccountIsCreated(String lastName)
     {
         // Create a new Account record.
@@ -134,7 +195,14 @@
         insert newContactRecordAssociatedWithAccount;
     }
 
-    // Method to create multiple Lead records in bulk and insert them into the database.
+    /*
+    Class Name : Training
+    Method Name : createLeadsInBulk
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 18th July 2023
+    Summary : Create lead in Bulk
+    Description :  Method to create multiple Lead records in bulk and insert them into the database.
+    */
     public static void createLeadsInBulk(Integer numbers)
     {
         // Create a list to store multiple Lead records.
@@ -156,6 +224,11 @@
 
         // Output the list of Lead records to the debug log.
         system.debug(listOfLeadThatCreatedInBulk);
+
+        for(Lead l:listOfLeadThatCreatedInBulk)
+        {
+            system.debug(l);
+        }
 
         // Insert all the Lead records in the list into the database.
         insert listOfLeadThatCreatedInBulk;
