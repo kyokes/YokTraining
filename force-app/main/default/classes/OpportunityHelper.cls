@@ -4,6 +4,11 @@ public with sharing class OpportunityHelper extends UtilityHelper
     {
         Account newAccountRecord = new Account();
         newAccountRecord.Name = 'Test' + generateRandomString();
-        insert newAccountRecord; 
+
+        Boolean checking = validateLoggedInUserHasCreateAccessToObject('Account');
+        if(checking=True)
+        {
+            insert newAccountRecord; 
+        }
     }
 }
