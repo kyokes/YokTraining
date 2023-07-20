@@ -6,8 +6,15 @@ public virtual with sharing class UtilityHelper
         system.debug(num);
         return num;
     }
-    public static void validateLoggedInUserHasCreateAccessToObject()
-    {  
+    public static Boolean validateLoggedInUserHasCreateAccessToObject(String objectName) 
+    {
+        // Get the SObject in which you want check the user has create access
+        Schema.SObjectType objectType = Schema.getGlobalDescribe().get(objectName);
 
+        // Check if the object is accessible and createable by the current user
+        Boolean hasAccess = objectType.getDescribe().isAccessible() && objectType.getDescribe().isCreateable();
+
+        return hasAccess;
     }
+  
 }
