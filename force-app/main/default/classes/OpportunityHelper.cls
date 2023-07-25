@@ -1,6 +1,10 @@
-// This is an Apex class named OpportunityHelper that extends the UtilityHelper class.
-// It contains a method to create a new Account record and checks if the logged-in user has create access to Account.
-
+/*
+    Class Name : OpportunityHelper
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 19th July 2023
+    Summary : This is an Apex class named OpportunityHelper that extends the UtilityHelper class.
+    Description : It contains a method to create a new Account record and checks if the logged-in user has create access to Account.
+ */
 public with sharing class OpportunityHelper extends UtilityHelper
 {
     // This method creates a new Account record and inserts it into the database.

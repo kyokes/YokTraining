@@ -1,6 +1,10 @@
-// This is a virtual Apex class named UtilityHelper that contains utility methods for generating a random integer
-// and validating if the logged-in user has create access to a specific SObject.
-
+/*
+    Class Name : UtilityHelper
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 19th July 2023
+    Description : This is a virtual Apex class named UtilityHelper that contains utility methods for generating a random 
+    integer and validating if the logged-in user has create access to a specific SObject.
+ */
 public virtual with sharing class UtilityHelper 
 {
     // This method generates a random integer between 0 and 999 (inclusive).

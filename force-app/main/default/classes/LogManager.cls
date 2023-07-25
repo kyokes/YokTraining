@@ -1,6 +1,10 @@
-// This is an Apex interface named LogManager.
-// It defines a contract for classes that want to implement log creation functionality.
-
+/*
+    Interface Name : LogManager
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 19th July 2023
+    Summary :  This is an Apex interface named LogManager.
+    Description : It defines a contract for classes that want to implement log creation functionality.
+ */
 public interface LogManager 
 {
     // This is a method signature for creating logs.

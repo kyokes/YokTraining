@@ -1,15 +1,25 @@
-// This is an Apex class named DmlLogManager that implements the LogManager interface.
-
+/*
+    Class Name : DmlLogManager
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 19th July 2023
+    Description : This is an Apex class named DmlLogManager that implements the LogManager interface.
+ */
 public with sharing class DmlLogManager implements LogManager
 {
-    // This is the createLog() method, which will be executed to demonstrate the DML operations.
+    /*
+    Class Name : DmlLogManager
+    Method Name : createLog
+    Author Name  : Yokesh.K@4iapps.com
+    Date Added : 19th July 2023
+    Description :  This is the createLog() method, which will be executed to demonstrate the DML operations.
+    */
     public static void createLog()
     {
         // Create a new Contact record.
         Contact newContactRecord = new Contact();
 
         // Set the last name of the Contact
-        newContactRecord.LastName = 'Mari';
+        newContactRecord.LastName = 'Test Anoop';
 
         // Perform the insert operation on the Contact record and get the result of the operation.
         Database.SaveResult result = Database.insert(newContactRecord);
