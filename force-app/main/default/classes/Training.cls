@@ -5,6 +5,8 @@
  */
  public with sharing class Training extends UtilityHelper
 {
+    @TestVisible 
+    private static final String COMPANY_NAME = '4i Apps';
     /*
     Class Name : Training
     Method Name : printNumber
@@ -94,18 +96,19 @@
     Summary : Create New Lead  
     Description :  Method to create a new Lead record and insert it into the database.
     */
-    public static Lead createLeadRecord(String lastName, String email, String company)
+    @InvocableMethod
+    public static void createLeadRecord(List<String> lastName /*,String email, String company*/)
     {  
         // Create a new Lead object.
         Lead leadRecordToInsert = new Lead();
         // Set the attributes of the Lead object.
-        leadRecordToInsert.LastName = lastName;
-        leadRecordToInsert.Email = email;
-        leadRecordToInsert.Company = company;
+        leadRecordToInsert.LastName = lastName.get(0);
+        //leadRecordToInsert.Email = email;
+       //leadRecordToInsert.Company = company;
         // Insert the Lead record into the database.
         insert leadRecordToInsert;
         // Return the inserted Lead record.
-        return leadRecordToInsert;
+        //return leadRecordToInsert;
     }
 
     /*
