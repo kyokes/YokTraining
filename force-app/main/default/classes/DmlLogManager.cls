@@ -19,7 +19,7 @@ public with sharing class DmlLogManager implements LogManager
         Contact newContactRecord = new Contact();
 
         // Set the last name of the Contact
-        newContactRecord.LastName = 'Test Anoop';
+        newContactRecord.LastName = 'Test Yok';
 
         // Perform the insert operation on the Contact record and get the result of the operation.
         Database.SaveResult result = Database.insert(newContactRecord);
