@@ -20,8 +20,40 @@ public with sharing class LeadCheck
             } catch (DmlException errorMsg) 
             {
                system.debug(errorMsg.getMessage()); 
-            }
+            } 
         }                               
         return isTrue;
+    }
+    public static void queryTest()
+    {
+        List<Opportunity> getRelatedAccountsAndProducts = [SELECT 
+                                                                 StageName, 
+                                                                 Name, 
+                                                                 CloseDate,
+                                                                 Account.Name,
+                                                                 (SELECT 
+                                                                        Name 
+                                                                        FROM OpportunityLineItems)
+                                                                FROM Opportunity];
+        system.debug(getRelatedAccountsAndProducts);
+
+        List<Contact> getAllContactsWhichAreNotRelatedToAccount =[SELECT
+                                                                        Id,
+                                                                        LastName
+                                                                FROM 
+                                                                    Contact
+                                                                WHERE AccountId=Null];
+        system.debug(getAllContactsWhichAreNotRelatedToAccount);
+        
+        List<Account> getAllAccountsWhichAreNotRelatedToContact =[SELECT 
+                                                                        Name 
+                                                                  FROM 
+                                                                        Account 
+                                                                  WHERE 
+                                                                        Id NOT IN (SELECT 
+                                                                                        AccountId 
+                                                                                    FROM 
+                                                                                        Contact)];
+        system.debug(getAllAccountsWhichAreNotRelatedToContact);
     }
 }
