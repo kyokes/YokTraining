@@ -44,7 +44,7 @@ public with sharing class LeadCheck
                                                                     Contact
                                                                 WHERE AccountId=Null];
         system.debug(getAllContactsWhichAreNotRelatedToAccount);
-        
+
         List<Account> getAllAccountsWhichAreNotRelatedToContact =[SELECT 
                                                                         Name 
                                                                   FROM 
@@ -55,5 +55,26 @@ public with sharing class LeadCheck
                                                                                     FROM 
                                                                                         Contact)];
         system.debug(getAllAccountsWhichAreNotRelatedToContact);
+    }
+    public static void dynamicQuery()
+    {
+        String queryToExecute='SELECT Id , Name FROM Account';
+
+        String dayOfToday = Datetime.now().format('E');
+
+        Set<String> lastWeek = new Set<String>{'Mon','Tue','Wed'};
+        Set<String> thisWeek = new Set<String>{'Thu','Fri','Sat'};
+        
+        if(lastWeek.contains(dayOfToday))
+        {
+            queryToExecute+= ' WHERE CreatedDate >= LAST_WEEK';
+        }
+        else if(thisWeek.contains(dayOfToday))
+        {
+            queryToExecute+= ' WHERE CreatedDate >= THIS_WEEK';
+        }
+        List<SObject> result =Database.query(queryToExecute);
+        System.debug(queryToExecute);
+        System.debug(result);
     }
 }
