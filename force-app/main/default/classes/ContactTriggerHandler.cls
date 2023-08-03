@@ -1,6 +1,6 @@
 public with sharing class ContactTriggerHandler 
 {
-    public static void NoOfContacts(List<Contact> contacts)
+    public static void noOfContacts(List<Contact> contacts)
     {
         Set<Id> contactIds = new Set<Id>();
         List<Account> accountListToBeUpdated = new List<Account>();
@@ -23,4 +23,31 @@ public with sharing class ContactTriggerHandler
         }
         Update getNoOfContacts;
     }
+    public static void noOfContacts(List<Contact> contacts,Map<Id, Contact> oldContactsMap)
+    {
+        Set<Id> accountIds = new Set<Id>();
+        List<Account> accountListToBeUpdated = new List<Account>();
+        for(Contact currentContact:contacts)
+        {
+            if(currentContact.AccountId!=Null)
+            {
+                accountIds.add(currentContact.AccountId);
+            }
+            if (oldContactsMap != null && oldContactsMap.containsKey(currentContact.Id) && oldContactsMap.get(currentContact.Id).AccountId != currentContact.AccountId) {
+                accountIds.add(oldContactsMap.get(currentContact.Id).AccountId);
+            }
+        }
+
+        List<Account> getNoOfContacts = [SELECT NumberOfEmployees,(SELECT Id FROM Contacts) Id FROM Account WHERE Id IN:accountIds];
+
+        for(Account currentContact : getNoOfContacts)
+        {
+            if(getNoOfContacts.size()!=null)
+            {
+                currentContact.NumberOfEmployees = currentContact.contacts.size();
+            }
+        }
+        Update getNoOfContacts;
+    }
 }
+    

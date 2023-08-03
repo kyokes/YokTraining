@@ -9,7 +9,7 @@ trigger ContactTrigger on Contact (after insert,after update,after delete)
         }
         when AFTER_UPDATE        
         {
-            ContactTriggerHandler.NoOfContacts(trigger.new);
+            ContactTriggerHandler.NoOfContacts(trigger.new, trigger.oldMap);
         }
         when AFTER_DELETE
         {
