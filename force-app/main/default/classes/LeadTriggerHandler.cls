@@ -36,7 +36,7 @@ public with sharing class LeadTriggerHandler
         List<Round_Robin_Config__c> getRoundRobinCofigRecords = [SELECT 
                                                                         Id,Region__c, IsActive__c 
                                                                  FROM Round_Robin_Config__c 
-                                                                 WHERE Region__c=:regionName];
+                                                                 WHERE Region__c=:regionName AND IsActive__c=TRUE];
         for(Round_Robin_Config__c getRoundRobinConfigId:getRoundRobinCofigRecords)
         {
             roundRobinConfigId=getRoundRobinConfigId.Id;
@@ -51,12 +51,16 @@ public with sharing class LeadTriggerHandler
         {
             roundRobinMemberId=assignUser.Round_Robin_Member__c;
         }
+
+        //Integer lastIndex = RoundRobinSettings__c.getInstance().LastAssingedIndex__c;
         List<Round_Robin_Member__c> getRoundRobinMembers=[SELECT 
                                                                 User__c, CreatedDate, 
                                                                 Name, Id 
                                                             FROM Round_Robin_Member__c
                                                             WHERE Id =:roundRobinMemberId];
-        for(Round_Robin_Member__c getUserId :getRoundRobinMembers)
+        
+        //Integer nextIndex = (lastIndex + 1)%getRoundRobinMembers.size();
+        for(Round_Robin_Member__c getUserId :getRoundRobinMembers)  
         {
             userId=getUserId.User__c;
         }

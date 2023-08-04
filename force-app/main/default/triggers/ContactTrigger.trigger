@@ -1,4 +1,4 @@
-trigger ContactTrigger on Contact (after insert,after update,after delete) 
+trigger ContactTrigger on Contact (after insert,after update,after delete,before update) 
 {
     switch on Trigger.operationType
     {
@@ -6,6 +6,11 @@ trigger ContactTrigger on Contact (after insert,after update,after delete)
         when AFTER_INSERT
         {
             ContactTriggerHandler.NoOfContacts(trigger.new);
+            ContactTriggerHandler.sendWelcomeMessage(trigger.new);
+        }
+        when BEFORE_UPDATE
+        {
+            ContactHelperExtension.updateDescription(trigger.new);
         }
         when AFTER_UPDATE        
         {

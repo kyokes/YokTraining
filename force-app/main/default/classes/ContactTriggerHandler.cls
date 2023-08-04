@@ -49,5 +49,23 @@ public with sharing class ContactTriggerHandler
         }
         Update getNoOfContacts;
     }
+    
+    public static void sendWelcomeMessage(List<Contact> sendEmailToContacts)
+    {
+        List<Messaging.SingleEmailMessage> message = 
+                                        new List<Messaging.SingleEmailMessage>(); 
+        for(Contact currentContact : sendEmailToContacts)
+        {
+            Messaging.SingleEmailMessage emailToBeSend = 
+                                            new Messaging.SingleEmailMessage();
+                            
+            emailToBeSend.setToAddresses(new List<String>{currentContact.Email});
+            emailToBeSend.setSubject('Welcome Message');
+            emailToBeSend.plaintextbody='Welcome to 4iApps ';
+            message.add(emailToBeSend);
+        }
+        List<Messaging.SendEmailResult> messageSend = 
+                                                Messaging.sendEmail(message);
+    }
 }
     

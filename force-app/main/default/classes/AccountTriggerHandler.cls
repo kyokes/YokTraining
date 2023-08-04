@@ -18,4 +18,18 @@ public with sharing class AccountTriggerHandler
             system.debug(ar);
         }
     }
+
+
+    public static void populateCountryName(List<Account> accountRecord)
+     {
+        for(Account currentAccount:accountRecord){
+            if(currentAccount.BillingCountry == null) 
+            {
+                currentAccount.BillingCountry = 'USA';
+            }
+        
+        }
+     }
 }
+
+
