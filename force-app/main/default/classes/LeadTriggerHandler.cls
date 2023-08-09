@@ -1,5 +1,18 @@
+/*
+    Class Name : LeadTriggerHandler
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 06th August 2023
+    Description : This Class Contains all the trigger functionalities, all methods here are invoked by the LeadTrigger
+ */
 public with sharing class LeadTriggerHandler 
 {
+    /*
+    Class Name : LeadTriggerHandler
+    Method Name : assignSalesRepBasedOnRegion
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 06th August 2023
+    Description : This method used to assign sales rep by region in round robin assignment , from a lead record Country
+    */   
     public static void assignSalesRepBasedOnRegion(List<Lead> leadsThatNeedsToAssigned)
     {
         Integer index = 0;
@@ -58,6 +71,13 @@ public with sharing class LeadTriggerHandler
        Update updateRoundRobinMembersRegion;
     }
 
+    /*
+    Class Name : LeadTriggerHandler
+    Method Name : insertIntegrationLog
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 09th August 2023
+    Description : This method used to create a Integration Log Record when ever a Lead Is Inserted
+    */ 
     public static void insertIntegrationLog(List<Lead> currentLeads)
     {
        List<Integration_Log__c> integrationLogToBeInserted = new List<Integration_Log__c>();
@@ -69,5 +89,19 @@ public with sharing class LeadTriggerHandler
               integrationLogToBeInserted.add(newLog);
        }
        Insert integrationLogToBeInserted;
+    }
+    /*
+    Class Name : LeadTriggerHandler
+    Method Name : trackFieldHistoryOnLeadName
+    Author Name  : Yokesh.k@4iapps.com
+    Date Added : 09th August 2023
+    Description : This method used to track a Field tracking and it is going call Queueable method 
+    */
+    public static void trackFieldHistoryOnLeadName(List<Lead> leadsThatAreUpdating)
+    {
+       for(Lead currentLead : leadsThatAreUpdating)
+       {
+              System.enqueueJob(new TrackChangesOnLead(currentLead.Id));
+       }
     }
 }

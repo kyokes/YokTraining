@@ -1,4 +1,4 @@
-trigger LeadTrigger on Lead (before insert,after insert) 
+trigger LeadTrigger on Lead (before insert,after insert,before update) 
 {
     switch on Trigger.operationType
     {
@@ -9,6 +9,10 @@ trigger LeadTrigger on Lead (before insert,after insert)
         when AFTER_INSERT
         {
             LeadTriggerHandler.insertIntegrationLog(trigger.new);
+        }
+        when BEFORE_UPDATE
+        {
+            LeadTriggerHandler.trackFieldHistoryOnLeadName(trigger.new);
         }
     }
 }
