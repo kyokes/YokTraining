@@ -2,72 +2,72 @@ public with sharing class LeadTriggerHandler
 {
     public static void assignSalesRepBasedOnRegion(List<Lead> leadsThatNeedsToAssigned)
     {
+        Integer index = 0;
         String countryName;
         String regionId;
         String regionName;
-        String roundRobinConfigId;
-        String roundRobinMemberId;
-        String userId;
-        Map<String, Integer> regionAssignmentCounter = new Map<String, Integer>();
+
+        List<Round_Robin_Member_Region__c> updateRoundRobinMembersRegion = new List<Round_Robin_Member_Region__c>();
+
         for(Lead newLead:leadsThatNeedsToAssigned)
         {
             countryName=newLead.Country; 
         }
-        List<Country_Region__mdt> countryNames=[SELECT 
-                                                        Label,Region__c 
-                                                FROM Country_Region__mdt 
-                                                WHERE Label=:countryName];
 
-        for(Country_Region__mdt getRegionId:countryNames)
-        {
-            regionId=getRegionId.Region__c;
-        }
-        system.debug(countryNames);
-        List<Region__mdt> regionNames =[SELECT 
-                                                Label 
-                                        FROM Region__mdt 
-                                        WHERE Id =: regionId];
-        for(Region__mdt getRegionName:regionNames)
-        {
-            regionName=getRegionName.Label;
-        }
-        System.debug(regionName);
+        List<Country_Region__mdt> getRegionNames= [ SELECT Label,
+                                                           Region__c,
+                                                           Region__r.Label 
+                                                    FROM 
+                                                           Country_Region__mdt 
+                                                    WHERE  
+                                                           Label =:countryName];
 
-        List<Round_Robin_Config__c> getRoundRobinCofigRecords = [SELECT 
-                                                                        Id,Region__c, IsActive__c 
-                                                                 FROM Round_Robin_Config__c 
-                                                                 WHERE Region__c=:regionName AND IsActive__c=TRUE];
-        for(Round_Robin_Config__c getRoundRobinConfigId:getRoundRobinCofigRecords)
+        for(Country_Region__mdt getRegionName:getRegionNames)
         {
-            roundRobinConfigId=getRoundRobinConfigId.Id;
+            regionName=getRegionName.Region__r.Label;
+            System.debug(regionName);
         }
-        system.debug(roundRobinConfigId);
-        List<Round_Robin_Member_Region__c> getMembers=[SELECT 
-                                                            Name, Round_Robin_Config__c, 
-                                                            Round_Robin_Member__c, IsActive__c, Id 
-                                                        FROM Round_Robin_Member_Region__c 
-                                                        WHERE Round_Robin_Config__c=:roundRobinConfigId];
-        for(Round_Robin_Member_Region__c assignUser:getMembers)
-        {
-            roundRobinMemberId=assignUser.Round_Robin_Member__c;
-        }
-
-        //Integer lastIndex = RoundRobinSettings__c.getInstance().LastAssingedIndex__c;
-        List<Round_Robin_Member__c> getRoundRobinMembers=[SELECT 
-                                                                User__c, CreatedDate, 
-                                                                Name, Id 
-                                                            FROM Round_Robin_Member__c
-                                                            WHERE Id =:roundRobinMemberId];
         
-        //Integer nextIndex = (lastIndex + 1)%getRoundRobinMembers.size();
-        for(Round_Robin_Member__c getUserId :getRoundRobinMembers)  
-        {
-            userId=getUserId.User__c;
-        }
+        List<Round_Robin_Member_Region__c> getMembers= [ SELECT 
+                                                                Round_Robin_Config__r.Region__c, 
+                                                                Round_Robin_Member__r.User__c, 
+                                                                IsActive__c 
+                                                         FROM 
+                                                                Round_Robin_Member_Region__c 
+                                                         WHERE 
+                                                                Round_Robin_Config__r.Region__c =:regionName 
+                                                         AND 
+                                                                IsActive__c =TRUE 
+                                                         Order By 
+                                                                Last_Assigned_Date_And_Time__c ASC ];
+
+        System.debug(getMembers);   
+        
         for(Lead assignLeadOwner:leadsThatNeedsToAssigned)
         {
-            assignLeadOwner.OwnerId=userId;
-        }                                    
-        System.debug(getMembers);
+            if(getMembers.size()>0)
+            {
+                Round_Robin_Member_Region__c assigneeUpdate = getMembers.get(Math.mod(index,getMembers.size()));
+                System.debug(assigneeUpdate);
+                assignLeadOwner.OwnerId=assigneeUpdate.Round_Robin_Member__r.User__c;
+                assigneeUpdate.Last_Assigned_Date_And_Time__c=System.now();
+                index++;
+                updateRoundRobinMembersRegion.add(assigneeUpdate);
+            }
+        }                                   
+       Update updateRoundRobinMembersRegion;
+    }
+
+    public static void insertIntegrationLog(List<Lead> currentLeads)
+    {
+       List<Integration_Log__c> integrationLogToBeInserted = new List<Integration_Log__c>();
+       for(Lead oneLead:currentLeads)
+       {
+              Integration_Log__c newLog = new Integration_Log__c();
+              newLog.Request_Body__c=oneLead.LastName;
+              newLog.Related_Lead__c=oneLead.Id;
+              integrationLogToBeInserted.add(newLog);
+       }
+       Insert integrationLogToBeInserted;
     }
 }
