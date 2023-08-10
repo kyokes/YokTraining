@@ -5,7 +5,7 @@
     Description : Implements Queueable Apex
  */
 public with sharing class TrackChangesOnLead implements Queueable 
-{
+{  
     //Declaring class Level Variable Id
     Id leadId;
 
@@ -21,19 +21,19 @@ public with sharing class TrackChangesOnLead implements Queueable
     {
         //Created a List because 'n' no of change can occur on a single lead record , so we are quering and storing in a collection
         List<LeadHistory> updatedLead = [ SELECT 
-                                            CreatedById, 
-                                            CreatedDate,  
-                                            LeadId,
-                                            NewValue, 
-                                            OldValue,
-                                            CreatedBy.Name 
-                                    FROM 
-                                            LeadHistory
-                                    WHERE   
-                                            LeadId=:leadId ];
+                                                CreatedById, 
+                                                CreatedDate,  
+                                                LeadId,
+                                                NewValue, 
+                                                OldValue,
+                                                CreatedBy.Name 
+                                          FROM 
+                                                LeadHistory
+                                          WHERE   
+                                                LeadId=:leadId ];
         for(LeadHistory currentLead:updatedLead)
         {
-            System.debug('Old Value Of The Lead Record Is '+currentLead.OldValue);
+            System.debug('Old Value Of The Lead Record Is '+currentLead.OldValue);  
             System.debug('New Value Of The Lead Record Is '+currentLead.NewValue);
             System.debug('Date And Time Of The Lead Record When Change Introduced '+currentLead.CreatedDate);
             System.debug('User Who Intiated The Change '+currentLead.CreatedBy.Name);

@@ -7,11 +7,13 @@ trigger AccountTrigger on Account (after insert,after update,before insert)
            // AccountTriggerHandler.getAllOpportunitiesRelatedToAccount(trigger.new);
         
         }
-    
+        when AFTER_INSERT
+        {
+           AccountTriggerHandler.validateAddress(trigger.new);
+        }
         when BEFORE_INSERT
         {
            AccountTriggerHandler.populateCountryName(trigger.new);
-        
         }
     }
     

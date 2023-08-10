@@ -30,6 +30,17 @@ public with sharing class AccountTriggerHandler
         
         }
      }
+
+     public static void validateAddress(List<Account> accountRecords)
+     {
+        for(Account currentAccount : accountRecords)
+        {
+            if(currentAccount.ByPassAddressValidation__c==False)
+            {
+                System.enqueueJob(new validateAddressOnAccount(currentAccount.Id));
+            }
+        }
+     }
 }
 
 
