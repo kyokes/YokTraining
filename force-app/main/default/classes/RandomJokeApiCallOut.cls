@@ -13,8 +13,12 @@ public with sharing class RandomJokeApiCallOut implements Queueable, Database.Al
         if(response.getStatusCode()==200)
         {
             String body = response.getBody();
-            WrapperClass resultParsed = (WrapperClass)JSON.deserialize(body, RandomJokeApiCallOut.WrapperClass.class);
-
+            // Map<String,Object> results= (Map<String,Object>)JSOn.deserializeUntyped(body);
+            // string joke = (String)results.get('setup');
+            // string line = (String)results.get('punchline');
+            // System.debug(joke);
+            // System.debug(line);
+             WrapperClass resultParsed = (WrapperClass)JSON.deserialize(body, RandomJokeApiCallOut.WrapperClass.class);
             System.debug(resultParsed.setup);
             System.debug(resultParsed.punchline);
         }
