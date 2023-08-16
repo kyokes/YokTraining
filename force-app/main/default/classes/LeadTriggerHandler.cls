@@ -15,7 +15,7 @@ public with sharing class LeadTriggerHandler
     */   
     public static void assignSalesRepBasedOnRegion(List<Lead> leadsThatNeedsToAssigned)
     {
-        Integer index = 0;
+        /*Integer index = 0;
         String countryName;
         String regionId;
         String regionName;
@@ -68,7 +68,59 @@ public with sharing class LeadTriggerHandler
                 updateRoundRobinMembersRegion.add(assigneeUpdate);
             }
         }                                   
-       Update updateRoundRobinMembersRegion;
+       Update updateRoundRobinMembersRegion;*/
+       Set<String> countryNames = new Set<String>();
+       Map<String, String> leadCountryMap = new Map<String, String>();
+          
+       for (Lead newLead : leadsThatNeedsToAssigned) 
+       {
+              countryNames.add(newLead.Country);
+              leadCountryMap.put(newLead.Id, newLead.Country);
+       }
+          
+       Map<String, String> countryToRegionMap = new Map<String, String>();
+       for (Country_Region__mdt region : [SELECT Label, Region__c, Region__r.Label 
+                                                 FROM Country_Region__mdt 
+                                                 WHERE Label IN :countryNames]) 
+       {
+                  countryToRegionMap.put(region.Label, region.Region__r.Label);
+       }
+          
+       Map<String, List<Round_Robin_Member_Region__c>> regionToMembersMap = new Map<String, List<Round_Robin_Member_Region__c>>();
+          
+       for (Round_Robin_Member_Region__c member : [SELECT Round_Robin_Config__r.Region__c, 
+                                                                   Round_Robin_Member__r.User__c, 
+                                                                   IsActive__c 
+                                                            FROM Round_Robin_Member_Region__c 
+                                                            WHERE Round_Robin_Config__r.Region__c IN :countryToRegionMap.values() 
+                                                                  AND IsActive__c = TRUE 
+                                                            ORDER BY Last_Assigned_Date_And_Time__c ASC]) 
+       {
+              if (!regionToMembersMap.containsKey(member.Round_Robin_Config__r.Region__c)) 
+              {
+                     regionToMembersMap.put(member.Round_Robin_Config__r.Region__c, new List<Round_Robin_Member_Region__c>());
+              }
+              regionToMembersMap.get(member.Round_Robin_Config__r.Region__c).add(member);
+       }
+          
+       List<Round_Robin_Member_Region__c> updateRoundRobinMembersRegion = new List<Round_Robin_Member_Region__c>();
+          
+       for (Lead assignLeadOwner : leadsThatNeedsToAssigned) 
+       {
+              String regionName = countryToRegionMap.get(leadCountryMap.get(assignLeadOwner.Id));
+              List<Round_Robin_Member_Region__c> membersForRegion = regionToMembersMap.get(regionName);
+          
+              if (membersForRegion != null && !membersForRegion.isEmpty()) 
+              {
+                     Round_Robin_Member_Region__c assigneeUpdate = membersForRegion.get(0);
+                     assignLeadOwner.OwnerId = assigneeUpdate.Round_Robin_Member__r.User__c;
+                     assigneeUpdate.Last_Assigned_Date_And_Time__c = System.now();
+                     membersForRegion.remove(0);
+                     updateRoundRobinMembersRegion.add(assigneeUpdate);
+              }
+       }
+              update updateRoundRobinMembersRegion;
+          
     }
 
     /*

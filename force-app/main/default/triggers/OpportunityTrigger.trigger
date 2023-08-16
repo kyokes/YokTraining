@@ -9,16 +9,16 @@ trigger OpportunityTrigger on Opportunity (before insert,after insert,after upda
         {
             // Call the static method from OpportunityTriggerHandler class to update Opportunity names.
             // Pass in the list of new Opportunity records that are being inserted.
-            OpportunityTriggerHandler.updateOpportunityName(Trigger.new);
+            //OpportunityTriggerHandler.updateOpportunityName(Trigger.new);
         }
         when AFTER_INSERT
         {
             OpportunityTriggerHandler.addServiceCharges(Trigger.new);
-            OpportunityTriggerHandler.getAllOpportunitiesAmount(Trigger.new);
+            //OpportunityTriggerHandler.getAllOpportunitiesAmount(Trigger.new);
         }
         when AFTER_UPDATE
         {
-            OpportunityTriggerHandler.getAllOpportunitiesAmount(Trigger.new);
+            //OpportunityTriggerHandler.getAllOpportunitiesAmount(Trigger.new);
         }
     }
 }
