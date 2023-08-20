@@ -1,0 +1,49 @@
+.c-container {
+    border: 1px solid #d8dde6;
+    margin: 10px 0 20px;
+}
+
+.page-section {
+    border: solid 1px #ccc;
+    padding: 1rem;
+}
+.page-header{
+    height: 200px;
+    /* background-color: black; */
+}
+.page-right {
+    background: #f0efef;
+}
+h1
+{
+    font-weight: bolder;
+    font-size: xx-large;
+    color: black;
+}
+h2,h3,h4,h5
+{
+    font-weight: bold;
+    font-size: medium;
+    color: black;
+}
+img
+{
+    height: 150px;
+    width: 150px;
+}
+.headings
+{
+    font-weight: bolder;
+    font-size: large;
+    color: #000;
+}
+.content
+{
+    font-weight: 600;
+    /* font-size: small; */
+    font-style: italic;
+    color: black;
+}
+img{
+    background-color: black;
+}

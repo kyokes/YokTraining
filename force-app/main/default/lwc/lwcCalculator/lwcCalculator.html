@@ -1,0 +1,159 @@
+<template>
+    <lightning-card title="Calculator">
+            <div class="slds-var-p-around_medium lgc-bg">
+                <lightning-input type="number" 
+                                 name="input1" 
+                                 label="Enter a number 1" 
+                                 value={inputNumber1} 
+                                 onchange={handleInputNumber1} 
+                                 onfocus={focusHandler}>
+                </lightning-input>
+                <lightning-input type="number" 
+                                 name="input2" 
+                                 label="Enter a number 2" 
+                                 value={inputNumber2} 
+                                 onchange={handleInputNumber2} 
+                                 onfocus={focusHandler}>
+                </lightning-input>
+                <lightning-input type="number" 
+                                 label="Output" 
+                                 name="output" 
+                                 value={answer} 
+                                readonly>
+                </lightning-input>
+            </div>
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <lightning-button label="Clr"
+                                      variant="brand" 
+                                      title="Primary action" 
+                                      onclick={handleClr} 
+                                      class="slds-var-m-left_xx-large">
+                    </lightning-button>
+                </div>
+                <div class="slds-col">
+                    <lightning-button label="%" 
+                                      title="Non-primary action" 
+                                      onclick={handlePercent} 
+                                      class="slds-var-m-left_xx-large">
+                    </lightning-button>
+                </div>
+                <div class="slds-col">
+                    <lightning-button label="0" 
+                                      title="Non-primary action" 
+                                      onclick={handleNumber0} 
+                                      class="slds-var-m-left_xx-large">
+                    </lightning-button>
+                </div>
+                <div class="slds-col">
+                    <lightning-button label="Add"
+                                      variant="brand" 
+                                      title="Primary action" 
+                                      onclick={handleAddition} 
+                                      class="slds-var-m-left_xx-large" >
+                    </lightning-button>
+                </div>
+            </div>
+            <div class="slds-var-m-top_xx-small">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning-button label="7" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber7} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="8" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber8} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="9" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber9} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="Sub"
+                                          variant="brand" 
+                                          title="Primary action" 
+                                          onclick={handleSubraction} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-var-m-top_xx-small">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning-button label="4" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber4} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="5" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber5} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="6" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber6} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="Mul"
+                                          variant="brand" 
+                                          title="Primary action" 
+                                          onclick={handleMultiplication} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-var-m-top_xx-small">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning-button label="1" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber1} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="2" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber2} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="3" 
+                                          title="Non-primary action" 
+                                          onclick={handleNumber3} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-button label="Div"
+                                          variant="brand" 
+                                          title="Primary action" 
+                                          onclick={handleDivision} 
+                                          class="slds-var-m-left_xx-large">
+                        </lightning-button>
+                    </div>
+                </div> 
+            </div>
+    </lightning-card>
+</template>
+
+

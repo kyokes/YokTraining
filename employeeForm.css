@@ -1,0 +1,25 @@
+table 
+{
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+}
+th
+{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: gold;
+}
+td 
+{
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+h1
+{
+    text-align: center;
+    flex-direction:row;
+}
+tr:hover {background-color:lightgoldenrodyellow;}
