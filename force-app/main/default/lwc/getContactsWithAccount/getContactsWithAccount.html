@@ -1,0 +1,12 @@
+<template>
+    <template for:each={accountAndContactList} for:item="accountContactData">
+        <template for:each={accountContactData.Contacts} for:item="contactData">
+            <c-get-related-contacts-with-account key={accountContactData.Id} 
+                                                 account-name={accountContactData.Name}
+                                                 contact-name={contactData.Name}
+                                                 email={contactData.Email}
+                                                 phone={contactData.Phone}>
+            </c-get-related-contacts-with-account>
+        </template>
+    </template>
+</template>
