@@ -1,0 +1,17 @@
+<template>
+<lightning-card title="Accounts">
+    <template for:each={accountList} for:item="currentAccount">
+        <div class="slds-var-p-around_xx-small lgc-bg" key={currentAccount.Id}>
+        <lightning-button 
+            variant="brand"
+            label={currentAccount.Name} 
+            onclick={handleClick}
+            name={currentAccount.Id} 
+        ></lightning-button>
+    </div>
+    </template>
+    <c-contact-component account-id={accountId}>
+
+    </c-contact-component>
+</lightning-card>
+</template>

@@ -12,8 +12,9 @@ public with sharing class GetContactsWithAccount
                                                  Contacts) 
                                     FROM 
                                         Account 
-                                    WHERE 
-                                        Name =:'Salesforce Team'];
+                                    // WHERE 
+                                    //     Name =:'Salesforce Team'
+                                    LIMIT 5];
 
         return getAccounts;
     }

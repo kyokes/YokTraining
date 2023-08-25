@@ -1,8 +1,7 @@
 import { LightningElement, api } from 'lwc';
 
-export default class GetRelatedContactsWithAccount extends LightningElement {
-
-
+export default class GetRelatedContactsWithAccount extends LightningElement 
+{
     @api
     accountName;
     @api

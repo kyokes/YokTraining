@@ -1,8 +1,8 @@
 <template>
     <template for:each={accountAndContactList} for:item="accountContactData">
+        <c-get-account-data key={accountContactData.Id} account-name={accountContactData.Name}></c-get-account-data>
         <template for:each={accountContactData.Contacts} for:item="contactData">
-            <c-get-related-contacts-with-account key={accountContactData.Id} 
-                                                 account-name={accountContactData.Name}
+            <c-get-related-contacts-with-account key={accountContactData.AccountId} 
                                                  contact-name={contactData.Name}
                                                  email={contactData.Email}
                                                  phone={contactData.Phone}>

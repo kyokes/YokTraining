@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="">
+        <div class="slds-var-p-around_medium lgc-bg">
+            <lightning-input type="text" value={contactName} label="Contact Name"></lightning-input>
+            <lightning-input type="text" value={contactPhone} label="Contact Phone"></lightning-input>
+        </div>
+        <div>
+            <template for:each={contactList} for:item="contactItem">
+                <!-- {contactItem.Name}-{contactItem.Phone} -->
+                    <c-child-display oncontactinvoke={captureContactInformation} contact-name={contactItem.Name} contact-phone={contactItem.Phone} key={contactItem.Id}>
+                        
+                    </c-child-display>
+            </template>
+        </div>
+    </lightning-card>
+</template>

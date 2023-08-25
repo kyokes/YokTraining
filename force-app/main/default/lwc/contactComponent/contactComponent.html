@@ -1,0 +1,16 @@
+<template>
+<lightning-card title="Contacts">
+    <template for:each={contactList} for:item="currentContact">
+        <div class="slds-var-p-around_xx-small lgc-bg" key={currentContact.Id}>
+        <lightning-button 
+            variant="brand"
+            label={currentContact.Name} 
+            onclick={handleClick}
+            name={currentContact.Id}
+        ></lightning-button>
+    </div>
+    </template>
+    <c-contact-detail-component contact-id={contactId}
+    ></c-contact-detail-component>
+</lightning-card>
+</template>

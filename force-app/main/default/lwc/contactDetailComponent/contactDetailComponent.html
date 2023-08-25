@@ -1,0 +1,58 @@
+<template>
+<lightning-card title="Contact Detail">
+    <template for:each={currentContactData} for:item="currentContact">
+        <div class="slds-var-p-around_medium lgc-bg" key={currentContact.Id}>
+            <lightning-input 
+                type="text"
+                label="First Name"
+                value={currentContact.FirstName}
+            ></lightning-input>
+            <lightning-input 
+                type="text"
+                label="Last Name"
+                value={currentContact.LastName}
+            ></lightning-input>
+            <lightning-input 
+                type="text"
+                label="Email"
+                value={currentContact.Email}
+            ></lightning-input>
+            <lightning-input 
+                type="text"
+                label="Phone Number"
+                value={currentContact.Phone}
+            ></lightning-input>
+            <lightning-input 
+                type="text"
+                label="Street"
+                value={currentContact.MailingStreet}
+            ></lightning-input>
+            <lightning-input 
+                type="text"
+                label="City"
+                value={currentContact.MailingCity}
+            ></lightning-input>
+            <lightning-input 
+                type="text"
+                label="State"
+                value={currentContact.MailingState}
+            ></lightning-input>
+            <lightning-input 
+                type="text"
+                label="PostalCode"
+                value={currentContact.MailingPostalCode}
+            ></lightning-input>
+            <lightning-input 
+                type="text"
+                label="Country"
+                value={currentContact.MailingCountry}
+            ></lightning-input>
+        </div>
+    </template>
+    <lightning-button 
+        variant="brand"
+        label="Save" 
+        onclick={handleClick} 
+    ></lightning-button>
+</lightning-card>
+</template>
