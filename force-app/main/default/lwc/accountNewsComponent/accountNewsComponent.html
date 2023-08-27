@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="News">
+        <template for:each={accountNewsList} for:item="newsItem">
+            <div key={newsItem.id} class="slds-var-m-around_medium">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-large" size="12">
+                        <lightning-layout> 
+                            <lightning-layout-item padding="around-small" size="6">
+                                <h1><strong>Title : </strong>{newsItem.title}</h1>
+                                <h2><Strong>Author : </Strong> {newsItem.author}</h2>
+                                <h3><Strong>Publish Date :</Strong> {newsItem.publish_date}</h3>
+                                <h4><Strong>Source Country :</Strong> {newsItem.source_country}</h4>
+                            </lightning-layout-item>
+                            <lightning-layout-item padding="around-small" size="6">
+                                    <img src={newsItem.image}/>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                </lightning-layout>
+                <!-- sldsValidatorIgnoreNextLine -->
+                <p><Strong>Description : </Strong>{newsItem.text}</p>                
+            </div>
+        </template>
+    </lightning-card>
+</template>
+

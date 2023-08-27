@@ -13,12 +13,14 @@ trigger OpportunityTrigger on Opportunity (before insert,after insert,after upda
         }
         when AFTER_INSERT
         {
-            OpportunityTriggerHandler.addServiceCharges(Trigger.new);
+            // OpportunityTriggerHandler.addServiceCharges(Trigger.new);
+            OpportunityTriggerHandler.updateOppAmountInWords(trigger.new);
             //OpportunityTriggerHandler.getAllOpportunitiesAmount(Trigger.new);
         }
         when AFTER_UPDATE
         {
             //OpportunityTriggerHandler.getAllOpportunitiesAmount(Trigger.new);
+            OpportunityTriggerHandler.updateOppAmountInWords(trigger.new,trigger.oldMap);
         }
     }
 }

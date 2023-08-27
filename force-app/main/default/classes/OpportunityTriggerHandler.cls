@@ -103,11 +103,32 @@ public with sharing class OpportunityTriggerHandler
             Account insertTotalAmountInAccount = new Account();
             insertTotalAmountInAccount.Id = currentOpportunity.AccountId;
             insertTotalAmountInAccount.OpportunityWonTotal__c = totalAmount;
-            updateAccountRecord.add(insertTotalAmountInAccount);
+            updateAccountRecord.add(insertTotalAmountInAccount);    
         }
     
         // Update the Account records
         Update updateAccountRecord;
     }
-    
+
+    public static void updateOppAmountInWords(List<Opportunity> opportunityRecord)
+    {
+        for(Opportunity opp : opportunityRecord)
+        {
+            if(opp.Id!=null && opp.Amount_In_Words__c==Null)
+            {
+                System.enqueueJob(new NumberToWordsOpportunityQueueable(opp.Id));
+            }
+
+        }
+    }
+    public static void updateOppAmountInWords(List<Opportunity> opportunityRecord,Map<Id,Opportunity> oldOpportunity)
+    {
+        for(Opportunity opp : opportunityRecord)
+        {
+            if(opp.Id!=null && oldOpportunity.get(opp.Id).Amount!=opp.Amount)
+            {
+                System.enqueueJob(new NumberToWordsOpportunityQueueable(opp.Id));
+            }
+        }
+    }
 }
