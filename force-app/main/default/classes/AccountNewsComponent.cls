@@ -50,10 +50,10 @@ public class AccountNewsComponent
 
     public class WrapperNews 
     {
-        @AuraEnabled
-        public Integer offset { get; set; }
-        @AuraEnabled
-        public Integer available { get; set; }
+        // @AuraEnabled
+        // public Integer offset { get; set; }
+        // @AuraEnabled
+        // public Integer available { get; set; }
         @AuraEnabled
         public List<NewsItem> news { get; set; }
     }

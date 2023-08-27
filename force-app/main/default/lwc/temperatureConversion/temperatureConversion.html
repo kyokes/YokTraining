@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Temperature Conversion">
+        <lightning-input 
+          type="toggle" 
+          label="Fahrenheit To Celsius"
+          message-toggle-active="Fahrenheit"
+          message-toggle-inactive="Celsius"
+          onchange={handleToggle}  
+        ></lightning-input>
+        <lightning-input 
+          type="text"
+          label="Input"
+          onchange={handleInputChange}
+        ></lightning-input>
+        <lightning-input 
+          type="text"
+          label="Output"
+          value={result}
+        ></lightning-input>
+        <lightning-button 
+          variant="brand"
+          label="Submit" 
+          onclick={handleClick} 
+        ></lightning-button>
+    </lightning-card>
+</template>

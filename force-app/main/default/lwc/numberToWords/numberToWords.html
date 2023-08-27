@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Number To Words">
+        <div class="slds-var-p-around_medium lgc-bg">
+            <lightning-input type="number" label="Enter the Number" onchange={handleChange}></lightning-input>
+            <lightning-input type="text" label="Number In Words" value={convertedValue} read-only></lightning-input>
+        </div>
+        <lightning-button 
+          variant="brand"
+          label="Submit" 
+          onclick={handleClick}
+          class="slds-m-left_x-small" 
+        ></lightning-button>
+    </lightning-card>    
+</template>

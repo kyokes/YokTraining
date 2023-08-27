@@ -1,0 +1,57 @@
+<template>
+    <lightning-card title="Calculator Using SOAP">
+      <div class="slds-var-p-around_medium lgc-bg">
+        <lightning-input 
+          type="number"
+          label="Enter Number 1"
+          onchange={handleChange}
+          name="inputNumber1"
+        ></lightning-input>
+        <lightning-input 
+          type="number"
+          label="Enter Number 2"
+          onchange={handleChange}
+          name="inputNumber2"
+        ></lightning-input>
+        <lightning-input 
+          type="number"
+          label="Result"
+          value={result}
+        ></lightning-input>
+      </div>
+      <lightning-layout multiple-rows="true">
+        <lightning-layout-item padding="around-large" size="12">
+            <lightning-layout>
+              <lightning-layout-item padding="around-small" size="3">
+                <lightning-button 
+                                variant="brand"
+                                label="Add" 
+                                onclick={handleAddition} 
+                ></lightning-button> 
+              </lightning-layout-item>
+              <lightning-layout-item padding="around-small" size="3">
+                <lightning-button 
+                                variant="brand"
+                                label="Sub" 
+                                onclick={handleSubraction} 
+                ></lightning-button> 
+              </lightning-layout-item>
+              <lightning-layout-item padding="around-small" size="3">
+                <lightning-button 
+                                variant="brand"
+                                label="Mul" 
+                                onclick={handleMultiplication} 
+                ></lightning-button> 
+              </lightning-layout-item>
+              <lightning-layout-item padding="around-small" size="3">
+                <lightning-button 
+                                variant="brand"
+                                label="Div" 
+                                onclick={handleDivision} 
+                ></lightning-button> 
+              </lightning-layout-item>
+            </lightning-layout>
+         </lightning-layout-item>
+        </lightning-layout>   
+     </lightning-card>
+</template>

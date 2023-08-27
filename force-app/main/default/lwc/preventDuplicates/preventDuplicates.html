@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="New Contact">
+        <div class="slds-var-p-around_medium lgc-bg">
+            <lightning-input type="text" label="First Name" onchange={handleChange} name="firstName"></lightning-input>
+            <lightning-input type="text" label="Last Name" onchange={handleChange} name="lastName"></lightning-input>
+            <lightning-input type="text" label="Email" onchange={handleChange} name="email"></lightning-input>
+            <lightning-input type="text" label="Mobile" onchange={handleChange} name="mobile"></lightning-input>
+        </div>
+        <lightning-button 
+          variant="brand"
+          label="Submit" 
+          onclick={handleClick} 
+        ></lightning-button>
+    </lightning-card>
+</template>

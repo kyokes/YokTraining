@@ -5,6 +5,21 @@ export default class AccountNewsComponent extends LightningElement
 {
     @api recordId;
     @track accountNewsList;
+    // @track shortText;
+
+    // @track showFullText = false;
+    // @track showReadMore = true;
+
+    // connectedCallback()
+    // {
+    //     this.shortText = this.accountNewsList.text.slice(0,400);
+    // }
+
+    // showFullContent() 
+    // {
+    //     this.showFullText = true;
+    //     this.showReadMore = false;
+    // }
 
     @wire(getNews, {accId: '$recordId'}) 
     WireContactRecords({error, data})
