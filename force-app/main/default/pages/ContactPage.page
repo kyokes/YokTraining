@@ -1,0 +1,17 @@
+<apex:page standardController="Contact" extensions="ContactControllerVFPage">
+    <apex:form>
+        <apex:pageMessages />
+
+        <apex:pageBlock title="Create Contact">
+            <apex:pageBlockSection>
+                <apex:inputField value="{!contact.FirstName}" required="true" />
+                <apex:inputField value="{!contact.LastName}" required="true" />
+                <apex:inputField value="{!contact.Email}" required="true" />
+            </apex:pageBlockSection>
+
+            <apex:pageBlockButtons>
+                <apex:commandButton value="Save" action="{!saveContact}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

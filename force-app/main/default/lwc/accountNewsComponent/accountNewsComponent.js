@@ -5,27 +5,19 @@ export default class AccountNewsComponent extends LightningElement
 {
     @api recordId;
     @track accountNewsList;
-    // @track shortText;
-
-    // @track showFullText = false;
-    // @track showReadMore = true;
-
-    // connectedCallback()
-    // {
-    //     this.shortText = this.accountNewsList.text.slice(0,400);
-    // }
-
-    // showFullContent() 
-    // {
-    //     this.showFullText = true;
-    //     this.showReadMore = false;
-    // }
+    @track showMoreDescription = false;
 
     @wire(getNews, {accId: '$recordId'}) 
     WireContactRecords({error, data})
     {
         if(data){
-            this.accountNewsList = data;
+            this.accountNewsList = data.map(item=>
+                {
+                    return{
+                        ...item,
+                        truncatedDescription: this.handleDescription(item.text)
+                    };
+                });
             console.log(this.accountNewsList);
             this.error = undefined;
         }else{
@@ -33,5 +25,12 @@ export default class AccountNewsComponent extends LightningElement
             this.accountNewsList = undefined;
         }
     }
-    
+    handleDescription(description)
+    {
+        return description.length > 300 ? `${description.slice(0,300)}...` :description;
+    }
+    handleShowMore()
+    {
+        this.showMoreDescription=true;
+    }
 }

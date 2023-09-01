@@ -60,26 +60,26 @@ public class AccountNewsComponent
 
     public class NewsItem 
     {
-        @AuraEnabled
-        public Integer id { get; set; }
+        // @AuraEnabled
+        // public Integer id { get; set; }
         @AuraEnabled
         public String title { get; set; }
         @AuraEnabled
         public String text { get; set; }
-        @AuraEnabled
-        public String url { get; set; }
+        // @AuraEnabled
+        // public String url { get; set; }
         @AuraEnabled
         public String image { get; set; }
         @AuraEnabled
         public String publish_date { get; set; }
         @AuraEnabled
         public String author { get; set; }
-        @AuraEnabled
-        public String language { get; set; }
+        // @AuraEnabled
+        // public String language { get; set; }
         @AuraEnabled
         public String source_country { get; set; }
-        @AuraEnabled
-        public Double sentiment { get; set; }
+        // @AuraEnabled
+        // public Double sentiment { get; set; }
         
     }
 }

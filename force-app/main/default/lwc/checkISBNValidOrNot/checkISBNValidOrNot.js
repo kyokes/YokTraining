@@ -23,6 +23,9 @@ export default class CheckISBNValidOrNot extends LightningElement
                 {
                     this.checkBoxTrue=true;
                 }
+                else{
+                    this.checkBoxTrue=false;
+                }
                 console.log(this.validatedResult);
             })
         .catch(error=>

@@ -17,10 +17,13 @@
                         </lightning-layout>
                     </lightning-layout-item>
                 </lightning-layout>
-                <!-- sldsValidatorIgnoreNextLine -->
-                <p><Strong>Description : </Strong>{newsItem.text}</p>
-                <!-- <p><Strong>Description : </Strong>{shortText}</p>
-                <a href="#" class="read-more" if:true={showReadMore} onclick={showFullContent}>Read More </a>                 -->
+                <template if:false={showMoreDescription}>
+                    <p><Strong>Description : </Strong>{newsItem.truncatedDescription}</p>
+                    <a onclick={handleShowMore}>Read More</a>
+                </template>
+                <template if:true={showMoreDescription}>
+                    <p><Strong>Description : </Strong>{newsItem.text}</p>
+                </template>
             </div>
         </template>
     </lightning-card>
