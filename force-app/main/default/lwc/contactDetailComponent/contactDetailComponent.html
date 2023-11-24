@@ -4,48 +4,66 @@
         <div class="slds-var-p-around_medium lgc-bg" key={currentContact.Id}>
             <lightning-input 
                 type="text"
+                name="fName"
                 label="First Name"
                 value={currentContact.FirstName}
+                onchange={handleChange}
             ></lightning-input>
             <lightning-input 
                 type="text"
+                name="lName"
                 label="Last Name"
                 value={currentContact.LastName}
+                onchange={handleChange}
             ></lightning-input>
             <lightning-input 
                 type="text"
+                name="email"
                 label="Email"
                 value={currentContact.Email}
+                onchange={handleChange}
             ></lightning-input>
             <lightning-input 
                 type="text"
+                name="phoneNumber"
                 label="Phone Number"
                 value={currentContact.Phone}
+                onchange={handleChange}
             ></lightning-input>
             <lightning-input 
                 type="text"
+                name="street"
                 label="Street"
                 value={currentContact.MailingStreet}
+                onchange={handleChange}
             ></lightning-input>
             <lightning-input 
                 type="text"
+                name="city"
                 label="City"
                 value={currentContact.MailingCity}
+                onchange={handleChange}
             ></lightning-input>
             <lightning-input 
                 type="text"
+                name="state"
                 label="State"
                 value={currentContact.MailingState}
+                onchange={handleChange}
             ></lightning-input>
             <lightning-input 
                 type="text"
+                name="postalCode"
                 label="PostalCode"
                 value={currentContact.MailingPostalCode}
+                onchange={handleChange}
             ></lightning-input>
             <lightning-input 
                 type="text"
+                name="country"
                 label="Country"
                 value={currentContact.MailingCountry}
+                onchange={handleChange}
             ></lightning-input>
         </div>
     </template>
@@ -55,4 +73,4 @@
         onclick={handleClick} 
     ></lightning-button>
 </lightning-card>
-</template>
+</template>  

@@ -31,4 +31,8 @@ export default class ContactComponent extends LightningElement
         console.log(this.contactId);
     }
 
+    whenRecordSaved()
+    {
+        console.log('record Saved');
+    }
 }

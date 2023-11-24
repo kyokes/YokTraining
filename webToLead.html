@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QMS Seals Contact Form</title>
+    <link rel="stylesheet" href="webToLead.css">
+</head>
+<body>
+    <div class="container">
+        <img src="https://www.qmsseals.com/wp-content/uploads/2019/06/240.png" alt="QMS Seals Logo" class="logo"> 
+        <h2>Contact Us</h2>
+
+        <div class="contact-info">
+            <div>
+                <div>Phone Number</div>
+                <div><a href="#">+971 568083451</a></div>
+            </div>
+            <div>
+                <div>E-mail</div>
+                <div><a href="mailto:info@qmsseals.com">info@qmsseals.com</a></div>
+            </div>
+        </div>
+
+        <div class="company-info">
+            <strong>QMS Seals</strong> 
+            is a Mechanical Seals Manufacturers and suppliers in UAE, Dubai, Sharjah, Ajman, Abu Dhabi, Al Ain, Ras Al Khaimah, Umm Al Quwain, Fujairah. 
+            QMS is a leading manufacturer and supplier of mechanical seals in UAE.
+            We are a team of young and dynamic technocrats, with years of experience in designing, manufacturing and troubleshooting of Mechanical Seals.
+        </div>
+
+        <div class="contact-info">
+            <h3>Want to get in touch? We'd love to hear from you. Here's how you can reach us:</h3>
+        </div>
+        
+        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+
+            <input type=hidden name="oid" value="00D5j00000D8l8M">
+            <input type=hidden name="retURL" value="https://www.qmsseals.com/">
+            <input id="lead_source" name="lead_source" type="hidden" value="Web" />
+	        <input id="00N5j00000MHrIQ" name="00N5j00000MHrIQ" type="hidden" value="New Customer" />
+
+            <label for="last_name">Your Name</label>
+            <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required>
+
+            <label for="email">Email</label>
+            <input id="email" maxlength="80" name="email" size="20" type="email" required>
+
+            <label for="company">Company</label>
+            <input  id="company" maxlength="40" name="company" size="20" type="text" />
+
+            <label for="phone">Phone</label>
+            <input id="phone" maxlength="40" name="phone" size="20" type="tel" required>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <div class="thank-you">
+            <h3>Thank you!</h3>
+            <img src="https://www.qmsseals.com/wp-content/uploads/2019/07/QMS-2.jpg" alt="QMS Seals Image">
+        </div>
+    </div>
+</body>
+</html>

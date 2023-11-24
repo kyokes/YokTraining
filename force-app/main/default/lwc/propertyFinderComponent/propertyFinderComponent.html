@@ -1,0 +1,70 @@
+<template>
+    <lightning-card title="Property Finder">
+        <div class="slds-var-p-around_medium lgc-bg">
+            <lightning-combobox
+                    name="Property"
+                    label="Property"
+                    value={selectedProperty}
+                    placeholder="Select Property"
+                    options={propertyOptions}
+                    onchange={handleChange}
+            ></lightning-combobox>
+            <lightning-combobox
+                    name="Property Type"
+                    label="Property Type"
+                    value={selectedPropertyType}
+                    placeholder="Select Property Type"
+                    options={propertyType}
+                    onchange={handleChange}
+            ></lightning-combobox>
+        </div>
+        <lightning-button 
+          variant="brand"
+          label="Find" 
+          onclick={handleClick} 
+        ></lightning-button>
+        <div style="height: 300px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={propertyFind}
+                    columns={columns}>
+            </lightning-datatable>
+        </div>
+        <!-- <table border="2">
+            <tr>
+                <th>Name</th>
+                <th>Property Type</th>
+                <th>Unit Name</th>
+                <th>Unit Short Code</th>
+                <th>Active</th>
+                <th>Status</th>
+                </tr>
+        </table>
+        <template for:each={propertyFind} for:item="currentProperty">
+            <div key={currentProperty.Id}>
+                <template for:each={currentProperty.City_Props__Properties__r} for:item="currentUnit">
+                    <div key={currentUnit.Id}>
+                        <table border="2">
+                            <tr>
+                            <th>Name</th>
+                            <th>Property Type</th>
+                            <th>Unit Name</th>
+                            <th>Unit Short Code</th>
+                            <th>Active</th>
+                            <th>Status</th>
+                            </tr>
+                            <tr>
+                            <th>{currentProperty.Name}</th>
+                            <th>{currentProperty.City_Props__Property_Type__c}</th>
+                            <th>{currentUnit.Name}</th>
+                            <th>{currentUnit.City_Props__Unit_Short_Code__c}</th>
+                            <th>{currentUnit.City_Props__Active__c}</th>
+                            <th>{currentUnit.City_Props__Status__c}</th>
+                            </tr>
+                        </table>
+                    </div>    
+                </template>        
+            </div>
+        </template> -->
+    </lightning-card>
+</template>

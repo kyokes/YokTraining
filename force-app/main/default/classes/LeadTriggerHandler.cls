@@ -156,4 +156,47 @@ public with sharing class LeadTriggerHandler
               System.enqueueJob(new TrackChangesOnLead(currentLead.Id));
        }
     }
+
+//     public static void automaticConversion(List<Lead> leadsAutomaticConversion)
+//     {
+//        List<Database.LeadConvert> listOfConvertedLeads = new List<Database.LeadConvert>();
+//        Database.LeadConvert convertLead = new Database.LeadConvert();
+
+//        for(Lead currentLead:leadsAutomaticConversion)
+//        {
+//               convertLead.setLeadId(currentLead.Id);
+//               convertLead.setConvertedStatus('Closed - Converted');
+//               Database.LeadConvertResult lcr = Database.convertLead(convertLead);
+//               system.debug(lcr.getAccountId());
+//               system.debug(lcr.getContactId());
+//               system.debug(lcr.getOpportunityId());       
+//        }
+//     }
+
+    public static void convertLeads(List<Lead> leadsToConvert) 
+    {
+       List<Database.LeadConvert> leadConvertList = new List<Database.LeadConvert>();
+   
+       for (Lead currentLead : leadsToConvert) 
+       {
+           Database.LeadConvert convertLead = new Database.LeadConvert();
+           convertLead.setLeadId(currentLead.Id);
+           convertLead.setConvertedStatus('Closed - Converted');
+   
+           leadConvertList.add(convertLead);
+       }
+   
+       if (!leadConvertList.isEmpty()) 
+       {
+           List<Database.LeadConvertResult> convertResults = Database.convertLead(leadConvertList);
+   
+           for (Database.LeadConvertResult lcr : convertResults) 
+           {
+               System.debug('Converted Account ID: ' + lcr.getAccountId());
+               System.debug('Converted Contact ID: ' + lcr.getContactId());
+               System.debug('Converted Opportunity ID: ' + lcr.getOpportunityId());
+           }
+       }
+   }
+   
 }

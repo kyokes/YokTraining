@@ -41,6 +41,24 @@ public with sharing class AccountTriggerHandler
             }
         }
      }
+
+     public static void countNumberOfContacts(List<Account> listOfAccounts)
+	{
+		Set<Id> accountIds = new Set<Id>();
+		
+		for(Account currentAccount : listOfAccounts)
+		{
+			accountIds.add(currentAccount.Id);	
+		}
+		
+		List<Contact> noOfContacts = [SELECT Id,LastName FROM Contact WHERE AccountId =:accountIds];
+		
+		for(Account currentAccount : listOfAccounts)
+		{
+			currentAccount.NumberOfEmployees = noOfContacts.Size();
+		}
+		Update listOfAccounts;		
+	}
 }
 
 

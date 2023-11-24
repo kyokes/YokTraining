@@ -27,5 +27,6 @@ export default class AccountComponent extends LightningElement
     {
         this.accountId=event.target.name;
         console.log(this.accountId);
+        console.log(event.target.dataset.website);
     }
 }

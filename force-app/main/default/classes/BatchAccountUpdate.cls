@@ -1,4 +1,4 @@
-public with sharing class BatchAccountUpdate implements Database.Batchable<SObject>
+ public with sharing class BatchAccountUpdate implements Database.Batchable<SObject>
 {
     public Database.QueryLocator start(Database.BatchableContext context)
     {

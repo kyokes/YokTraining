@@ -8,7 +8,8 @@ trigger LeadTrigger on Lead (before insert,after insert,before update)
         }
         when AFTER_INSERT
         {
-            LeadTriggerHandler.insertIntegrationLog(trigger.new);
+            //LeadTriggerHandler.insertIntegrationLog(trigger.new);
+            LeadTriggerHandler.convertLeads(trigger.new);
         }
         when BEFORE_UPDATE
         {

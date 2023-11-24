@@ -1,5 +1,7 @@
 import { LightningElement,api,wire } from 'lwc';
-import getContact from '@salesforce/apex/ContactDetailComponent.getContact'
+import getContact from '@salesforce/apex/ContactDetailComponent.getContact';
+import { ShowToastEvent } from "lightning/platformShowToastEvent";
+
 export default class ContactDetailComponent extends LightningElement 
 {
     @api
@@ -27,6 +29,16 @@ export default class ContactDetailComponent extends LightningElement
 
     handleClick(event)
     {
-        
+        const evt = new ShowToastEvent({ title: "Success",
+                                         message: "Record Successfully Saved",
+                                         variant: "Success",});    
+        this.dispatchEvent(evt);
+        this.dispatchEvent(new CustomEvent('recordsave')); 
+    }
+
+    handleChange(event)
+    {
+        this[event.target.name] = event.target.value;
+        console.log(this[event.target.name]);
     }
 }
