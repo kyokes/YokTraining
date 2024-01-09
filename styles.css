@@ -1,0 +1,103 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.nav li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.nav a:hover {
+    color: #ff0;
+}
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 30px 0;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.footer-widget {
+    width: 30%;
+}
+/* Add this CSS to your stylesheet */
+
+.widget {
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.title-border {
+    border-bottom: 2px solid #000; /* Add a border under the title */
+    padding-bottom: 10px; /* Add padding below the title */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-12 {
+    width: 100%; /* Make the container take the full width */
+}
+
+/* Style for each individual column */
+.col-lg-4,
+.col-md-4,
+.col-sm-12,
+.col-xs-12 {
+    box-sizing: border-box;
+    padding: 10px; /* Add padding to each column */
+}
+
+/* Optional: Add some styling to the paragraphs */
+.widget p {
+    margin-bottom: 10px;
+}
+
+/* Optional: Style the links */
+.widget a {
+    color: #007BFF; /* Change link color as needed */
+    text-decoration: none;
+}
+
+.widget a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+.pull-left {
+    float: left;
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+
+  .lead {
+    font-size: 1.2em; /* Adjust the font size as needed */
+    font-weight: bold;
+  }

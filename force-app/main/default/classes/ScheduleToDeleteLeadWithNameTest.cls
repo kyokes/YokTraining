@@ -37,7 +37,7 @@ public with sharing class ScheduleToDeleteLeadWithNameTest implements Schedulabl
                     Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
                     message.setToAddresses(emailIds);
                     message.setSubject('Error While Deleting');
-                    message.setPlainTextBody('The following error has occurred.');
+                    message.setPlainTextBody('The following error has occurred.' + err.getMessage());
                     message.setPlainTextBody(err.getStatusCode() + ': ' + err.getMessage());
                     messages.add(message);
                 }

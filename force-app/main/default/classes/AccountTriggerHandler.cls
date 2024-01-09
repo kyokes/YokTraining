@@ -59,6 +59,20 @@ public with sharing class AccountTriggerHandler
 		}
 		Update listOfAccounts;		
 	}
+
+    public static void main()
+    {
+        List<Account> getAllAccounts = [SELECT Id, Name,(SELECT Name FROM Contacts) FROM Account];
+
+        for(Account ac : getAllAccounts)
+        {
+            system.debug('Account Name is : '+ac.Name);
+            for(Contact con:ac.Contacts)
+            {
+                System.debug('Contact Name is : '+con.Name);
+            }
+        }
+    }
 }
 
 
