@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Component Child">
+        <template for:each={accountInformation} for:item="accountInfo">
+            <div key={accountInfo.Id}>
+                {accountInfo.Name}
+                <lightning-input 
+                    type="text"
+                    name="fName"
+                    label="Account Name"
+                    value={accountInfo.Name}
+                    onchange={handleChange}
+                ></lightning-input>
+                <lightning-button 
+                  variant="brand"
+                  label="Save" 
+                  onclick={handleClick} 
+                ></lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>

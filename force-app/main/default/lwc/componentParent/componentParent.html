@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Component Parent">
+        <template for:each={accountList} for:item="accounts">
+            <div key={accounts.Id}>
+                <lightning-button 
+                  variant="brand"
+                  label={accounts.Name} 
+                  onclick={handleClick}
+                  name={accounts.Id} 
+                ></lightning-button>
+            </div>
+        </template>
+        <c-component-child onvaluechange={handleValueChange} account-id={accountId}></c-component-child>
+        Changed Name :: {changedName}
+    </lightning-card>
+</template>

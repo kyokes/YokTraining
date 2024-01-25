@@ -33,7 +33,9 @@ export default class ContactDetailComponent extends LightningElement
                                          message: "Record Successfully Saved",
                                          variant: "Success",});    
         this.dispatchEvent(evt);
-        this.dispatchEvent(new CustomEvent('recordsave')); 
+        this.dispatchEvent(new CustomEvent('recordsave',{
+            detail:{userName : userName}
+        })); 
     }
 
     handleChange(event)

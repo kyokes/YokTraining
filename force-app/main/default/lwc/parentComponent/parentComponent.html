@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Indian Players">
+        <lightning-layout-item padding="around-small" size="12">
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" size="6">
+                    <div class="slds-size_3-of-4">
+                        <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                            <lightning-carousel>
+                                <lightning-carousel-image
+                                    src = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Virat_Kohli_during_the_India_vs_Aus_4th_Test_match_at_Narendra_Modi_Stadium_on_09_March_2023.jpg/330px-Virat_Kohli_during_the_India_vs_Aus_4th_Test_match_at_Narendra_Modi_Stadium_on_09_March_2023.jpg"
+                                    header = "Virat Kholi"
+                                    description = "is an Indian international cricketer and the former captain of the Indian national cricket team. He currently represents Royal Challengers Bangalore in the IPL and Delhi in domestic cricket.Kohli is widely regarded as one of the greatest batsmen in the history of cricket, and the best of 21st century.He is the highest run scorer in T20I and IPL. In 2020, the International Cricket Council named him the male cricketer of the decade. Kohli is currently fourth-highest run-scorer in international cricket and stands second in the list of most international centuries scored. He also holds the record for scoring the most centuries in One Day International cricket.Kohli was a member of the Indian team that won the 2011 Cricket World Cup and 2013 ICC Champions Trophy."
+                                    alternative-text = "First card accessible description."
+                                    href = "javascript:void(0);"
+                                    onclick={handleClick1}
+                                    lwc:ref="playerDetails1">
+                                </lightning-carousel-image>
+                                <lightning-carousel-image
+                                    src = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Sachin-Tendulkar_%28cropped%29.jpg/330px-Sachin-Tendulkar_%28cropped%29.jpg"
+                                    header = "Sachin Tendulkar"
+                                    description = "is an Indian former international cricketer who captained the Indian national team. He is widely regarded as one of the greatest batsmen in the history of cricket.Hailed as the world's most prolific batsman of all time, he is the all-time highest run-scorer in both ODI and Test cricket with more than 18,000 runs and 15,000 runs, respectively.He also holds the record for receiving the most player of the match awards in international cricket.Tendulkar was a Member of Parliament, Rajya Sabha by nomination from 2012 to 2018."
+                                    alternative-text = "Second card accessible description."
+                                    href = "javascript:void(0);"
+                                    onclick={handleClick2}
+                                    lwc:ref="playerDetails2">
+                                </lightning-carousel-image>
+                                <lightning-carousel-image
+                                    src = "https://cdn.britannica.com/25/222725-050-170F622A/Indian-cricketer-Mahendra-Singh-Dhoni-2011.jpg"
+                                    header = "MS Dhoni"
+                                    description = "is an Indian professional cricketer.Widely regarded as one of the most prolific wicket-keeper-batsmen and one of the greatest captain. He represented the Indian cricket team and was the captain of the side in limited-overs formats from 2007 to 2017 and in test cricket from 2008 to 2014. Dhoni has captained the most international matches and is the most successful Indian captain with wins in the 2007 ICC World Twenty20, the 2011 Cricket World Cup, the 2013 ICC Champions Trophy and the Asia Cup in 2010, 2016 and 2018. He plays for and captains Chennai Super Kings in the Indian Premier League."
+                                    alternative-text = "Third card accessible description."
+                                    href = "javascript:void(0);"
+                                    onclick={handleClick3}
+                                    lwc:ref="playerDetails3">
+                                </lightning-carousel-image>
+                            </lightning-carousel>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small" size="6">
+                        <c-child-component child-name={messageToChild}></c-child-component>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>                  
+    </lightning-card>
+</template>
