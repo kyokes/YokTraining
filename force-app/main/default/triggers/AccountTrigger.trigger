@@ -14,7 +14,8 @@ trigger AccountTrigger on Account (after insert,after update,before insert)
         }
         when BEFORE_INSERT
         {
-           AccountTriggerHandler.populateCountryName(trigger.new);
+           //AccountTriggerHandler.populateCountryName(trigger.new);
+           AccountTriggerHandlerNew.populateShippingAddress(trigger.new);
         }
     }
     

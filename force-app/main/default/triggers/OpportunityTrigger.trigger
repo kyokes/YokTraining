@@ -14,8 +14,9 @@ trigger OpportunityTrigger on Opportunity (before insert,after insert,after upda
         when AFTER_INSERT
         {
             // OpportunityTriggerHandler.addServiceCharges(Trigger.new);
-            OpportunityTriggerHandler.updateOppAmountInWords(trigger.new);
+            //OpportunityTriggerHandler.updateOppAmountInWords(trigger.new);
             //OpportunityTriggerHandler.getAllOpportunitiesAmount(Trigger.new);
+            OpportunityTriggerHandlerNew.insertOpportunityLineItem(trigger.new);
         }
         when AFTER_UPDATE
         {
