@@ -15,8 +15,14 @@ public with sharing class OpenWeatherApiCallout
 
         request.setEndpoint(endPoint);
         request.setMethod('GET');
+        try{
+            response = httpConnection.send(request);
+        }
+        catch(Exception e)
+        {
+            e.getCause()
+        }
 
-        response = httpConnection.send(request);
 
         System.debug(response.getBody());
         System.debug(response.getStatusCode());
