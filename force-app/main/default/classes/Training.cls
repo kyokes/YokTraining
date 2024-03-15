@@ -236,4 +236,20 @@
         // Insert all the Lead records in the list into the database.
         insert listOfLeadThatCreatedInBulk;
     }
+
+    public static void main()
+    {
+        List<Opportunity> listOfOpportunitiesWithAccount = [SELECT Id,Name,StageName,AccountId,Account.Name FROM Opportunity];
+
+        Map<String,Integer> accountNameWithChildRecords = new Map<String,Integer>();
+
+        for(Opportunity currentOpp:listOfOpportunitiesWithAccount)
+        {
+            if(currentOpp.StageName == 'Closed Won')
+            {
+                accountNameWithChildRecords.put(currentOpp.Account.Name,0);
+            }
+            System.debug(accountNameWithChildRecords);
+        }
+    }
 }

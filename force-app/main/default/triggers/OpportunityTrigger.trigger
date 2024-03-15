@@ -11,6 +11,10 @@ trigger OpportunityTrigger on Opportunity (before insert,after insert,after upda
             // Pass in the list of new Opportunity records that are being inserted.
             //OpportunityTriggerHandler.updateOpportunityName(Trigger.new);
         }
+        when BEFORE_UPDATE
+        {
+            GenerateRandomOTP.sendEmailToManagerWithOTP(trigger.new);
+        }
         when AFTER_INSERT
         {
             // OpportunityTriggerHandler.addServiceCharges(Trigger.new);

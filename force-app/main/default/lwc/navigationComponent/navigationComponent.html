@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Navigation">
+        <lightning-layout>
+            <lightning-layout-item size="2">
+              <lightning-button 
+                variant="brand"
+                label="Home" 
+                onclick={handleClick} 
+              ></lightning-button>  
+            </lightning-layout-item>
+            <lightning-layout-item size="2">
+              <lightning-button 
+                variant="brand"
+                label="New Business Customer" 
+                onclick={navigateToNewContact} 
+              ></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="2">
+              <lightning-button 
+                variant="brand"
+                label="New Contact Default Values" 
+                onclick={navigateToNewContactWithDefaults} 
+              ></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

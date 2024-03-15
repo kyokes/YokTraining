@@ -1,0 +1,26 @@
+<template>
+<lightning-card title="Get Joke">
+    <lightning-button 
+        variant="brand"
+        label="Get Joke" 
+        onclick={handleClick}
+    ></lightning-button>
+    <template if:true={showJoke}>
+        <template for:each={getJoke} for:item="currentJoke">
+            <div key={currentJoke.Id}>
+                <lightning-input 
+                    type="text"
+                    label="Set Up"
+                    value={currentJoke.setUp}
+                ></lightning-input>
+                <lightning-input 
+                    type="text"
+                    label="Punch Line"
+                    value={currentJoke.punchLine}
+                ></lightning-input>[l
+                7]
+            </div>
+        </template>
+    </template>
+</lightning-card>
+</template>
